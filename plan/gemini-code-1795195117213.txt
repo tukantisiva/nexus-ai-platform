@@ -1,0 +1,41 @@
+nexus-ai-platform/
+├── .github/
+│   └── workflows/
+│       └── daily_ingest.yml          # Free scheduled cron worker (every 12 hours)
+├── scripts/                          # Python Intelligence & Security Ingestion Worker
+│   ├── __init__.py
+│   ├── config.py                     # RSS feeds, ArXiv queries, NVD/OWASP endpoints
+│   ├── daily_ingest.py               # Main pipeline: Fetch -> Summarize -> Embed -> Upsert
+│   ├── summarizer.py                 # Gemini API structured extraction & tagging
+│   └── requirements.txt              # Python dependencies
+├── supabase/
+│   └── migrations/
+│       └── 001_initial_schema.sql    # Tables (intelligence_items, blueprints, roadmap) + pgvector RPC
+├── src/                              # Next.js App Router Application
+│   ├── app/
+│   │   ├── api/
+│   │   │   └── chat/
+│   │   │       └── route.ts          # RAG Chat endpoint querying Supabase pgvector + Gemini
+│   │   ├── blueprints/
+│   │   │   └── page.tsx              # Architectural Blueprint Vault (Mermaid.js diagrams)
+│   │   ├── radar/
+│   │   │   └── page.tsx              # AI Intelligence & Security Vulnerability Feed
+│   │   ├── roadmap/
+│   │   │   └── page.tsx              # Advisory Launchpad & Preparation Tracker
+│   │   ├── globals.css
+│   │   ├── layout.tsx
+│   │   └── page.tsx                  # Executive Dashboard Overview
+│   ├── components/
+│   │   ├── ui/                       # shadcn/ui components (button, card, badge, tabs, input)
+│   │   ├── MermaidDiagram.tsx        # Client-side Mermaid renderer
+│   │   ├── Navbar.tsx
+│   │   └── RagChatDrawer.tsx         # Interactive "Ask My Knowledge Base" drawer
+│   └── lib/
+│       ├── supabase.ts               # Supabase client & server helpers
+│       └── types.ts                  # Shared TypeScript interfaces
+├── .env.example                      # Template for local environment variables
+├── .gitignore
+├── next.config.ts
+├── package.json
+├── README.md
+└── tsconfig.json

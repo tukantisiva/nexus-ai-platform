@@ -1,0 +1,22 @@
+# Node & Next.js
+node_modules/
+.next/
+out/
+
+# Python cache & virtual environment
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Operating System
+.DS_Store
+Thumbs.db
+*.pkg
+*.dmg
+*.tar.gz
